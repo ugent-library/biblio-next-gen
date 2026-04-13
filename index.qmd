@@ -200,6 +200,8 @@ Uniform communication protocols between networked systems would significantly be
 :::{.callout-note}
 Biblio could act as a notification system that listens to (web) archiving events. For example, a SAFE‑PLN LOCKSS network could archive scholarly objects from Biblio and send an archiving announcement message when such archived objects become available.
 
+The FAIRVault could send a notification to the Biblio system containing information about the linkage between a dataset and a scholarly record in Biblio.
+
 Users of the Biblio system may be willing to activate an inbox for scholarly objects and receive notifications about access requests.
 
 Systems such as Biblio or Gizmo could open a notification channel that listens for media mentions of a researcher or mentions related to a scholarly object.
@@ -208,7 +210,9 @@ Automated agents could collect information about traditional and non‑tradition
 
 User of the Biblio system could request for a preprint a review in a decoupled prereview service such as: [PreReview](https://prereview.org), [PCI Peer Review In](https://peercommunityin.org) (see, e.g. University of Cambridge Repository workflows).
 
-The network below places Biblio at the center of a potential network of activities related to registration, certification, awareness, and archiving services. Each external repository, such as Lirias in Leuven, has its own “center” within a network of value‑adding services. In addition to these services, humans, such as internal and external researchers, can also interact with the system to request services from Biblio.
+The network below places Biblio at the center of a potential network of activities related to registration, certification, awareness, and archiving services. Each external repository, such as Lirias in Leuven, has its own “center” within a network of value‑adding services. In addition to these services, humans, such as internal and external researchers, can also interact with the system to request services from Biblio. 
+
+In an idealized world, all of these systems could be interlinked in both directions. Providing endpoints in these systems to inform each other about activities could be a first step toward realizing this idealized situation.
 
 ![](biblio_network.drawio.svg){width=50%}
 :::
