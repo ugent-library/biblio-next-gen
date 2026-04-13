@@ -1,0 +1,184 @@
+---
+title: "Biblio Next Generation Recommendations"
+format: html
+editor:
+    render-on-save: true
+---
+
+The following recommendations follow Bollini et. al "Next Generation Repositories"[^1] report, that forms the basis of new innovations in contemporary repository systems.
+
+[^1]: A. Bollini et al., “Next Generation Repositories: Behaviours and Technical Recommendations of the COAR Next Generation Repositories Working Group (2017),” Zenodo, Nov. 2017. doi: 10.5281/zenodo.8077381.
+
+The goal of the recommendations of the next generation report is to create a more **sustainable** and **innovative global network** for **sharing** information about research outputs and **building new research services** on top of this data. Such additional services include standardized usage metrics, peer review, social networking, interlinking, archiving and discovery. Achieving greater interoperability between repository systems and service provides increases the changes for providing an **alternative scholarly communication system** governed by institutional values rather than for-profit motives.
+
+To bring such a shared knowledge commons closer to a reality **interoperability features** need to be provided in repository systems. The document below provides some of the recommendations from the Next Generation Repositories report and applies it to the Academic Bibliography of Ghent University (Biblio)
+
+This vision aligns with the broader view of libraries and other scholarly institutions playing an active role in scholarly communication by enabling and governing a shared knowledge commons. It also aligns the vision of Ghent University Library to promote the creation of open knowledge within and outside the university community.
+
+The question then becomes: how will the library drive these changes? In this context, the library needs to:
+
+1. Ensure digital sovereignty by **expanding digital infrastructure** to maintain long-term control over UGent’s research output.
+2. **Promote open standards** by advocating for and implementing open standards.
+3. **Strengthen non-profit publishing initiatives**, including the development and support of its own open journal system.
+
+This document provides recommendations addressing the second point.
+
+##  Definitions
+
+Cool URI
+: A form of a sustainable, persistent and simple URI^[https://www.w3.org/Provider/Style/URI] that follows some basic rules:
+
+- It is independent from the underlying technology used to generate the resource:
+  - It avoids extensions such as .php, .cgi, ...
+  - It avoid the names of products in the path such as dspace.org.uk , ?id=product:83923
+- It is independent form the physical location of the resource (avoid names as frontend, backend, ...)
+- It does not contain resource metadata (status, access rights, ...)
+
+Scholarly Object
+: Scholarly objects on the web are typically published as a **set** of web resources. A scholarly object typically has:
+
+- A **persistent identifier** such as DOI, handle or any other identifier that can be expressed as a HTTP URI.
+- A **landing page** that is reachable be dereferencing the persistent identifier and following any HTTP redirects.
+- Zero or more **content resources** that provide the actual content of the scholarly object.
+- Zero or more **metadata resources** that describe the scholarly object in commonly used formats.
+- Other **identifiers**, including:
+  - **authors**
+  - **licenses**
+  - **types**
+
+E.g. The data set [PolarIs4CAUS](https://biblio.ugent.be/publication/01K953AFXMV2HHMPP5R8QCTN7B) in Biblio is a scholarly object:
+
+- It has a landing page: https://biblio.ugent.be/publication/01K953AFXMV2HHMPP5R8QCTN7B
+- It has a persistent id: http://hdl.handle.net/1854/LU-01K953AFXMV2HHMPP5R8QCTN7B
+- It does not have local content resources
+- It has several metadata resources:
+  - BibTex: https://biblio.ugent.be/publication/01K953AFXMV2HHMPP5R8QCTN7B.bibtex
+  - RIS: https://biblio.ugent.be/publication/01K953AFXMV2HHMPP5R8QCTN7B.ris
+  - ...
+  - DC: https://biblio.ugent.be/publication/01K953AFXMV2HHMPP5R8QCTN7B.dc
+- It has an author identifier: https://orcid.org/0000-0002-7776-2156
+- It has a type: https://schema.org/Dataset
+- It has no license information
+
+## Exposing Identifiers
+
+Many repositories assign persistent identifiers to the resources they host, however these identifiers are typically are only provided in a human-readable manner. E.g., Biblio currently exposes such links as:
+
+> Please use this url to cite or link to this publication: http://hdl.handle.net/1854/LU-01KJSWB5S7VBF86AWVVCNN1K18
+
+:::{.callout-tip}
+### Implement Typed Links
+A recommended machine readable interface exposes such links using [Signposting](https://signposting.org/FAIR/) `cite-as` Link headers on the *landing page*:
+
+```
+<http://hdl.handle.net/1854/LU-01KJSWB5S7VBF86AWVVCNN1K18>; rel="cite-as"
+```
+:::
+
+:::{.callout-note}
+✔ Biblio currently implements Signposting `cite-as` Link headers for the landing page.
+:::
+
+*Content resources* can potentially also have a persistent identifier. When such an identifier is distinct from the scholarly object identifier, the recommendation is to expose such identifiers using a Signposting `cite-as` Link header.
+
+:::{.callout-note}
+❌ Biblio currently does not expose persistent identifiers for content resources. However, the download link has the characteristics of a Cool URI:
+
+```
+https://biblio.ugent.be/publication/01KJSWB5S7VBF86AWVVCNN1K18/file/01KJSWKYABMQG7FK3DZGED8JPR.pdf
+```
+
+whereas the URL it redirects to has fewer of these characteristics ('backoffice' is a location):
+
+```
+https://backoffice.biblio.ugent.be/download/01KJSWB5S7VBF86AWVVCNN1K18/01KJSWKYABMQG7FK3DZGED8JPR
+```
+
+A recommendation is to provide the Cool URI version as `cite-as` link in the Link header of the content resource.
+:::
+
+:::{.callout-warning}
+Do not reuse the persistent identifier that identifies the scholarly object as a whole for content resources, and vice versa. These are *distinct* objects.
+:::
+
+## Declaring Licenses at the Resource Level
+
+Provide a uniform interface across different repository systems to identify the constraints on how scholarly objects can be (re)used. Currently, both humans and machines browsing the Web encounter highly heterogeneous ways in which this information is presented.
+A more uniform presentation can be presented by next-generation repositories. For humans, this can be achieved by embedding easy recognizable logos that convey the license. For machines, this information can be conveyed using the appropriate typed HTTP links.
+
+:::{.callout-tip}
+### Implement Typed License Links
+A recommended machine readable interface exposes such links using [Signposting](https://signposting.org/FAIR/) `license` Link headers for each content resource:
+
+```
+<https://spdx.org/licenses/CC-BY-NC-4.0.html> ; rel="license"
+```
+
+where the URI is the identifier of the appropriate license. E.g. a Creative Commons license expressed as HTTP URI's, preferably using [SPDX](https://spdx.org/) license URI's.
+:::
+
+:::{.callout-note}
+❌ License information is currently exposed in the front-end at the scholarly object level in the inappropriately named `$.copyright_statement` field in JSON exports.
+
+The backend provides such license information at resource level in the `license` field.
+:::
+
+:::{.callout-warning}
+Do not reuse the license for the scholarly object as a whole for content resources, and vice versa. These are *distinct* objects.
+:::
+
+## Discovery through Navigation
+
+Scholarly objects typically manifest on the Web as a collection of related resources. Although they are exposed through the landing pages of institutional repositories, on the Web individual parts of such scholarly objects (the PDF file, the metadata record, the landing page, an auxiliary file, etc) also circulate widely in external databases, aggregators as third‑party references.
+
+When a human is given a link reference to one part of a scholarly object (such as a PDF or a supplementary file) it is usually possible, with some heuristics, to locate the corresponding metadata, license information, or other components of the object. For machines, however, this process is far from straightforward. Even for humans, determining the correct landing page that provides a complete overview of the object can in general be challenging, especially when starting from a deep link such as a direct PDF URL.
+
+Typed Signposting links on all parts of a scholarly object, as explained in the previous sections, provide a way to interlink the web sources that make up a scholarly object. 
+
+Achieving such interoperability is not an idealistic ambition but a practical reality, as dozens of [adopters in the repository ecosystem](https://signposting.org/adopters/) already expose these links in their systems.
+
+:::{.callout-tip}
+### Implement Typed Links for all Scholary Object Resources
+Implement discovery through navigation for all web resources that make up a scholarly object.
+:::
+
+:::{.callout-note}
+Providing discovery through navigation features also acknowledges that both humans and machines need access to all parts of a scholarly object.
+
+Restricting machine access to, for example, only landing pages due to AI‑bot policies will immediately impact these types of interoperability features.
+
+Providing typed links as HTTP headers, however, allows machines to discover (meta)data for document types that are normally not trivial to process, such as arbitrary binary content and single-page applications.
+:::
+
+## Interacting with Resources
+
+Repositories do not exist as isolated islands; they are increasingly **interconnected**. Within the **local** university landscape, these interconnections can include links between an institutional archive and its data repository, the research productivity portal, departmental websites and the library catalog. Within the **global** web landscape, these interconnections may include connections to institutional and commercial aggregators such as OpenAIRE, CORE, and Google Scholar, as well as web archives and, increasingly, other types of value‑adding services such as journal platforms and peer‑review systems.
+
+Repositories can also increase their value by supporting services such as **alerting** -- either *sending* alerts external services about new content or *receiving* alerts about external events related to repository holdings.  An **outgoing alerting** service could, for instance, provide a real-time trigger to external systems for (re)indexing a scholarly object. An **incoming alert** could, for example, inform a scholarly object about new links generated by external systems that reference it.
+
+The interconnections are not only possible within the university landscape but are also envisioned on a **global scale**. Repositories could support commentary, annotation, and peer review activities. They can submit scholarly objects to archival services and aggregators not only in batches but also in an ad hoc manner.
+
+Even **internally**, a notification system can support topic subscriptions, webhooks, and similar mechanisms. More broadly, a uniform protocol for interacting with resources discourages monolithic system design. By applying a separation of concerns, capabilities such as data enrichment or automatic content discovery can be implemented independently of the core repository system — or delegated entirely to external services. For example, the management of temporary access to a scholarly object could be handled externally, while the access logic itself remains close to the content.
+
+Technologies to support these interoperability features are available across a range of messaging, alerting, annotation, and notification mechanisms. **(+)** A local messaging system offers full control over features, behavior, and performance tuning for a specific workload, **(−)** but introduces interoperability limitations and long-term sustainability concerns. Such systems are appropriate when no external dependencies are required. Crossing departmental or institutional boundaries, however, demands interoperability, ecosystem support, and long-term maintainability.
+
+A strategic response could be to invest in standardized messaging protocols such as [Webhooks](https://webhook.net/), [Web Annotations](https://www.w3.org/TR/annotation-model/), [COAR Notify](https://coar-notify.net), and [Event Notifications](https://www.eventnotifications.net).
+
+:::{.callout-tip}
+### Implement a Standards-Based Messaging System
+
+Implement a messaging system to support repository workflows such as:
+
+- Topic subscriptions : publish/subscribe channels for repository events
+- Webhooks : outbound HTTP callbacks on configurable triggers
+- Alerting : threshold- and event-driven notifications across channels
+- Event interlinkages : cross-repository and cross-system event routing
+:::
+
+:::{.callout-note}
+Biblio currently does not provide an internal or external messaging, alerting or notification system.
+
+A strategic investment could be the establishment of linkages between the local data repository, institutional repository and the research explorer.
+::: 
+
+## Collecting and Exposing Activities

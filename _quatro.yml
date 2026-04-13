@@ -1,0 +1,8 @@
+---
+project:
+  type: website # or book, etc.
+  preview:
+    port: 4242
+    browser: true
+    watch-inputs: true  # This ensures the preview refreshes on save
+---
