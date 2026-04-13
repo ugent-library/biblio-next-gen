@@ -314,11 +314,37 @@ Note
 <div class="callout-body-container callout-body">
 <p>Biblio currently does not provide an internal or external messaging, alerting or notification system.</p>
 <p>A strategic investment could be the establishment of linkages between the local data repository, institutional repository and the research explorer.</p>
+<p>Implementing such a system could enable automatic interlinking between repositories. Registering a scholarly object in one system could trigger automated, bidirectional links with other systems in the local environment.</p>
+<p>In a next stage, an outreach between institutional repositories in Flanders could be imagined to interlink scholarly resources.</p>
+<p>Alternatively, a data model for Biblio could be conceived as <strong>interaction‑based</strong>: each metadata update to a record is modeled as an event. Each event represents an update to the record, and the collection of events that modify the record constitutes the provenance trail of changes.</p>
+<p>Such a provenance trail, or a selected subset of it, could be exposed as an external web resource in the form of a public <strong>Event Log</strong>. This Event Log could focus on the most important value‑adding events for a scholarly object, such as those related to registration, certification, awareness, and archiving actions (see next section).</p>
 </div>
 </div>
 </section>
 <section id="collecting-and-exposing-activities" class="level2">
 <h2 class="anchored" data-anchor-id="collecting-and-exposing-activities">Collecting and Exposing Activities</h2>
+<p>The previous section focuses on interacting with resources through interlinking. In this section, these allowed interaction types enable <strong>read–write Web</strong> capabilities for repositories. In this scenario, a network of repositories and service provides should be able actively collect and expose, in real time, activities pertaining to the scholarly objects they host.</p>
+<p>Communication between repositories and service providers could be point-to-point (e.g., one repository directly communicating with another repository about an activity), or via publish-subscribe mechanisms (e.g., a service provides subscribing to specific activities or object types).</p>
+<p>Uniform communication protocols between networked systems would significantly benefit users by increasing interoperability across systems and providing the convenience of a more uniform user experience. From a network architecture perspective, such uniform communication protocols help prevent workflows from becoming tied to legacy protocols that are easy to introduce but almost impossible to deprecate. They also enable a network effect: when a community of repositories uses the same protocols to exchange information about activities, this creates fertile ground for sharing tools to collect and process that information.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Biblio could act as a notification system that listens to (web) archiving events. For example, a SAFE‑PLN LOCKSS network could archive scholarly objects from Biblio and send an archiving announcement message when such archived objects become available.</p>
+<p>Users of the Biblio system may be willing to activate an inbox for scholarly objects and receive notifications about access requests.</p>
+<p>Systems such as Biblio or Gizmo could open a notification channel that listens for media mentions of a researcher or mentions related to a scholarly object.</p>
+<p>Automated agents could collect information about traditional and non‑traditional scholarly objects and present it to Biblio for registration.</p>
+<p>User of the Biblio system could request for a preprint a review in a decoupled prereview service such as: <a href="https://prereview.org">PreReview</a>, <a href="https://peercommunityin.org">PCI Peer Review In</a> (see, e.g.&nbsp;University of Cambridge Repository workflows).</p>
+<p>The network below places Biblio at the center of a potential network of activities related to registration, certification, awareness, and archiving services. Each external repository, such as Lirias in Leuven, has its own “center” within a network of value‑adding services. In addition to these services, humans, such as internal and external researchers, can also interact with the system to request services from Biblio.</p>
+<p><img src="biblio_network.drawio.svg" class="img-fluid" style="width:50.0%"></p>
+</div>
+</div>
 </section>
 
 

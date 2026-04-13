@@ -179,6 +179,36 @@ Implement a messaging system to support repository workflows such as:
 Biblio currently does not provide an internal or external messaging, alerting or notification system.
 
 A strategic investment could be the establishment of linkages between the local data repository, institutional repository and the research explorer.
+
+Implementing such a system could enable automatic interlinking between repositories. Registering a scholarly object in one system could trigger automated, bidirectional links with other systems in the local environment.
+
+In a next stage, an outreach between institutional repositories in Flanders could be imagined to interlink scholarly resources.
+
+Alternatively, a data model for Biblio could be conceived as **interaction‑based**: each metadata update to a record is modeled as an event. Each event represents an update to the record, and the collection of events that modify the record constitutes the provenance trail of changes.
+
+Such a provenance trail, or a selected subset of it, could be exposed as an external web resource in the form of a public **Event Log**. This Event Log could focus on the most important value‑adding events for a scholarly object, such as those related to registration, certification, awareness, and archiving actions (see next section).
 ::: 
 
 ## Collecting and Exposing Activities
+
+The previous section focuses on interacting with resources through interlinking. In this section, these allowed interaction types enable **read–write Web** capabilities for repositories. In this scenario, a network of repositories and service provides should be able actively collect and expose, in real time, activities pertaining to the scholarly objects they host.
+
+Communication between repositories and service providers could be point-to-point (e.g., one repository directly communicating with another repository about an activity), or via publish-subscribe mechanisms (e.g., a service provides subscribing to specific activities or object types).
+
+Uniform communication protocols between networked systems would significantly benefit users by increasing interoperability across systems and providing the convenience of a more uniform user experience. From a network architecture perspective, such uniform communication protocols help prevent workflows from becoming tied to legacy protocols that are easy to introduce but almost impossible to deprecate. They also enable a network effect: when a community of repositories uses the same protocols to exchange information about activities, this creates fertile ground for sharing tools to collect and process that information.
+
+:::{.callout-note}
+Biblio could act as a notification system that listens to (web) archiving events. For example, a SAFE‑PLN LOCKSS network could archive scholarly objects from Biblio and send an archiving announcement message when such archived objects become available.
+
+Users of the Biblio system may be willing to activate an inbox for scholarly objects and receive notifications about access requests.
+
+Systems such as Biblio or Gizmo could open a notification channel that listens for media mentions of a researcher or mentions related to a scholarly object.
+
+Automated agents could collect information about traditional and non‑traditional scholarly objects and present it to Biblio for registration.
+
+User of the Biblio system could request for a preprint a review in a decoupled prereview service such as: [PreReview](https://prereview.org), [PCI Peer Review In](https://peercommunityin.org) (see, e.g. University of Cambridge Repository workflows).
+
+The network below places Biblio at the center of a potential network of activities related to registration, certification, awareness, and archiving services. Each external repository, such as Lirias in Leuven, has its own “center” within a network of value‑adding services. In addition to these services, humans, such as internal and external researchers, can also interact with the system to request services from Biblio.
+
+![](biblio_network.drawio.svg){width=50%}
+:::
