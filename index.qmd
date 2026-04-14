@@ -1,5 +1,10 @@
 ---
 title: "Biblio Next Generation Recommendations"
+author: 
+  - name: "Patrick Hochstenbach"
+    affiliation: "Ghent University Library"
+    email: "patrick.hochstenbach@ugent.be"
+date: last-modified
 format: html
 editor:
     render-on-save: true
