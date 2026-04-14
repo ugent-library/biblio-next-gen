@@ -310,9 +310,8 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>✔ Discovery through navigation is handled quite well in Biblio for landing pages. Given a landing page, both humans and machines can discover the metadata and all other parts of the scholarly object.</p>
-<p>❌ However, for the Person page, no such mechanisms are available. From such a page, machines do not have a quick, machine-readable overview of all scholarly contributions of a researcher, even though the Biblio API does support such exports.</p>
-<p>Navigating to a page such as https://biblio.ugent.be/person/0000-0001-8390-6171 should also provide for machines a link to a machine-readable version of these publications. E.g. a link to https://biblio.ugent.be/person/0000-0001-8390-6171/publication/export?format=json</p>
-<p>TODO : How to discover such links?</p>
+<p>✔/❌ For the Person page, Biblio adds a <code>rel="alternate"</code> link to an RSS feed listing scholarly objects. However, this listing is fragmentary and only provides information about the most recent daily, weekly, and monthly entries for that person. The Biblio API does support a much richer export, but this can only be discovered if a human or machine manages to find the API page and correctly interpret its content.</p>
+<p>Navigating to a page such as https://biblio.ugent.be/person/0000-0001-8390-6171 should also provide machines with a link to a machine-readable version of these publications—for example, a <code>rel="alternate"</code> link to https://biblio.ugent.be/person/0000-0001-8390-6171/publication/export?format=json. Such <code>rel="alternate"</code> links could also be exposed via HTTP Link headers for the sake of uniformity.</p>
 </div>
 </div>
 </section>
@@ -455,8 +454,8 @@ Note
 <p>What Biblio does quite well:</p>
 <ul>
 <li>✔ Modelling persons using multiple unique identifiers</li>
-<li>✔ Make such identifiers addressable (e.g.&nbsp;https://biblio.ugent.be/person/0000-0001-8390-6171)</li>
-<li>✔ Presenting such identifiers as clickable links on the Person page</li>
+<li>✔ Make such identifiers addressable (e.g.&nbsp;ORCID are addressible as https://biblio.ugent.be/person/0000-0001-8390-6171)</li>
+<li>✔ Presenting such identifiers as clickable links on the Person page (currently only the ORCID id)</li>
 <li>✔ Exposing such identifiers in a machine-readable format (such as Signposting, JSON, RDF,…)</li>
 </ul>
 <p>What Biblio is missing:</p>
@@ -467,6 +466,19 @@ Note
 </ul>
 </div>
 </div>
+<section id="authentication-of-users" class="level3">
+<h3 class="anchored" data-anchor-id="authentication-of-users">Authentication of Users</h3>
+<p>Alternative authentication mechanisms so that external researchers can interact with scholars and scholarly objects in Biblio.</p>
+<p><em>Out of scope</em></p>
+</section>
+<section id="exposing-standardized-usage-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="exposing-standardized-usage-metrics">Exposing Standardized Usage Metrics</h3>
+<p>TODO</p>
+</section>
+<section id="preserving-resources" class="level3">
+<h3 class="anchored" data-anchor-id="preserving-resources">Preserving Resources</h3>
+<p>TODO</p>
+</section>
 </section>
 
 
