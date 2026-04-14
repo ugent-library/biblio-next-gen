@@ -278,6 +278,10 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Implement discovery through navigation for all web resources that make up a scholarly object.</p>
+<ul>
+<li>✔ Biblio currently supports Signposting headers for the landing pages of scholarly objects</li>
+<li>❌ Biblio currently does not support Signposting headers for the all the other parts of the scholarly object (such as the PDF URL)</li>
+</ul>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -293,6 +297,22 @@ Note
 <p>Providing discovery through navigation features also acknowledges that both humans and machines need access to all parts of a scholarly object.</p>
 <p>Restricting machine access to, for example, only landing pages due to AI‑bot policies will immediately impact these types of interoperability features.</p>
 <p>Providing typed links as HTTP headers, however, allows machines to discover (meta)data for document types that are normally not trivial to process, such as arbitrary binary content and single-page applications.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Implement Machine-Readable Output for Person Pages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>✔ Discovery through navigation is handled quite well in Biblio for landing pages. Given a landing page, both humans and machines can discover the metadata and all other parts of the scholarly object.</p>
+<p>❌ However, for the Person page, no such mechanisms are available. From such a page, machines do not have a quick, machine-readable overview of all scholarly contributions of a researcher, even though the Biblio API does support such exports.</p>
+<p>Navigating to a page such as https://biblio.ugent.be/person/0000-0001-8390-6171 should also provide for machines a link to a machine-readable version of these publications. E.g. a link to https://biblio.ugent.be/person/0000-0001-8390-6171/publication/export?format=json</p>
+<p>TODO : How to discover such links?</p>
 </div>
 </div>
 </section>
@@ -333,7 +353,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Biblio currently does not provide an internal or external messaging, alerting or notification system.</p>
+<p>❌ Biblio currently does not provide an internal or external messaging, alerting or notification system.</p>
 <p>A strategic investment could be the establishment of linkages between the FAILVault, Biblio and the research explorer.</p>
 <p>Implementing such a system could enable automatic interlinking between repositories. Registering a scholarly object in one system could trigger automated, bidirectional links with other systems in the local environment.</p>
 <p>In a next stage, an outreach between institutional repositories in Flanders could be imagined to interlink scholarly resources.</p>
@@ -357,6 +377,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>❌ Biblio currently does not expose activities related to the scholarly objects it hosts in machine‑readable formats. In addition, Biblio currently has limited workflows for the automatic collection of activities related to scholarly objects, and these workflows do not use standardized protocols.</p>
 <p>This note will describe some scenarios that are enabled by collecting and exposing activities.</p>
 <p>Biblio could act as a notification system that listens to (web) archiving events. For example, a SAFE‑PLN LOCKSS network could archive scholarly objects from Biblio and send an archiving announcement message when such archived objects become available. Such a value-added service can be presented to users as banners.</p>
 <p>The FAIRVault could send a notification to the Biblio system containing information about the linkage between a dataset and a scholarly record in Biblio. Such an event can be expressed as bi-directional links between Biblio and the FAIRVault.</p>
@@ -372,6 +393,78 @@ Note
 <p><img src="biblio_network.drawio.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Collect data/publication Links Using a Standards-Based Protocol
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A quick starting point for Biblio to introduce notifications could be the implementation of the COAR Notify profile for Event Notifications, enabling the collection of information about linkages to scholarly objects hosted by Biblio.</p>
+<p>An example repository containing possible message types is available at: https://codeberg.org/phochste/en-data-publication-example</p>
+</div>
+</div>
+</section>
+<section id="identification-of-users" class="level2">
+<h2 class="anchored" data-anchor-id="identification-of-users">Identification of Users</h2>
+<p>Facilitating collection of activities or creation of overlay content such as annotation, commentary and peer review in distributed networks is greatly improved by the ability of uniformly identifying users.</p>
+<p>Such identifiers can be used to expand professional networks and to discover and identify important people, relevant scientific methods, conferences, journals, meetup venues, and funding opportunities. For example, ORCIDs can be used to query scholarly databases to find more information about the subject.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>✔ Biblio currently implements many forms of identification mechanisms such as:</p>
+<ul>
+<li>Internal Biblio identifiers: F5134A54-F0ED-11E1-A9DE-61C894A0A6B4</li>
+<li>UGent identifiers: 802000069754, 975581625833</li>
+<li>OCRID: 0000-0002-8596-222X</li>
+</ul>
+</div>
+</div>
+<p>However, there might be other identities that can be associated with a researcher such as:</p>
+<ul>
+<li>Social media accounts: Linked-In, X, Bluesky, Mastodon, Blogs, Substack</li>
+<li>External affiliation identifiers: Leuven ID, Oxford ID, Sorbonne ID</li>
+</ul>
+<p>Social media accounts are no longer just tools for casual networking; they have become vital hubs for real-time scholarly debate and academic exchange. Integrating these profiles (on a voluntary basis) into an institutional repository (such as Biblio) offers two strategic advantages:</p>
+<ul>
+<li><p><em>Connecting to informal scholarly communication</em>: it bridges the gap between formal publications and the “informal” scholarly conversations happening online, providing a fuller picture of a researcher’s impact.</p></li>
+<li><p><em>Verification and trust</em>: by linking to these platforms, the institution provides a “stamp of authenticity.” This creates a digital handshake—often referred to as a <code>rel=me</code> link—that proves a social media account truly belongs to the researcher. This protects their professional identity and ensures that followers are engaging with a validated source.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Support a Richer Data Model for Person Identifiers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What Biblio does quite well:</p>
+<ul>
+<li>✔ Modelling persons using multiple unique identifiers</li>
+<li>✔ Make such identifiers addressable (e.g.&nbsp;https://biblio.ugent.be/person/0000-0001-8390-6171)</li>
+<li>✔ Presenting such identifiers as clickable links on the Person page</li>
+<li>✔ Exposing such identifiers in a machine-readable format (such as Signposting, JSON, RDF,…)</li>
+</ul>
+<p>What Biblio is missing:</p>
+<ul>
+<li>❌ Supporting other types of person identifiers in the data model</li>
+<li>❌ Exposing all types of identifiers as clickable links on the Person page</li>
+<li>❌ Adding the <code>rel="me"</code> attribute to such clickable links</li>
+</ul>
 </div>
 </div>
 </section>

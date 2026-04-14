@@ -145,6 +145,9 @@ Achieving such interoperability is not an idealistic ambition but a practical re
 :::{.callout-tip}
 ### Implement Typed Links for all Scholary Object Resources
 Implement discovery through navigation for all web resources that make up a scholarly object.
+
+- ✔ Biblio currently supports Signposting headers for the landing pages of scholarly objects
+- ❌ Biblio currently does not support Signposting headers for the all the other parts of the scholarly object (such as the PDF URL)
 :::
 
 :::{.callout-note}
@@ -153,6 +156,18 @@ Providing discovery through navigation features also acknowledges that both huma
 Restricting machine access to, for example, only landing pages due to AI‑bot policies will immediately impact these types of interoperability features.
 
 Providing typed links as HTTP headers, however, allows machines to discover (meta)data for document types that are normally not trivial to process, such as arbitrary binary content and single-page applications.
+:::
+
+:::{.callout-tip}
+### Implement Machine-Readable Output for Person Pages
+
+✔ Discovery through navigation is handled quite well in Biblio for landing pages. Given a landing page, both humans and machines can discover the metadata and all other parts of the scholarly object.
+
+❌ However, for the Person page, no such mechanisms are available. From such a page, machines do not have a quick, machine-readable overview of all scholarly contributions of a researcher, even though the Biblio API does support such exports.
+
+Navigating to a page such as https://biblio.ugent.be/person/0000-0001-8390-6171 should also provide for machines a link to a machine-readable version of these publications. E.g. a link to https://biblio.ugent.be/person/0000-0001-8390-6171/publication/export?format=json
+
+TODO : How to discover such links?
 :::
 
 ## Interacting with Resources
@@ -181,7 +196,7 @@ Implement a messaging system to support repository workflows such as:
 :::
 
 :::{.callout-note}
-Biblio currently does not provide an internal or external messaging, alerting or notification system.
+❌ Biblio currently does not provide an internal or external messaging, alerting or notification system.
 
 A strategic investment could be the establishment of linkages between the FAILVault, Biblio and the research explorer.
 
@@ -203,6 +218,8 @@ Communication between repositories and service providers could be *point-to-poin
 Uniform communication protocols between networked systems would significantly benefit users by increasing interoperability across systems and providing the convenience of a more uniform user experience. From a network architecture perspective, such uniform communication protocols help prevent workflows from becoming tied to legacy protocols that are easy to introduce but almost impossible to deprecate. They also enable a network effect: when a community of repositories uses the same protocols to exchange information about activities, this creates fertile ground for sharing tools to collect and process that information.
 
 :::{.callout-note}
+❌ Biblio currently does not expose activities related to the scholarly objects it hosts in machine‑readable formats. In addition, Biblio currently has limited workflows for the automatic collection of activities related to scholarly objects, and these workflows do not use standardized protocols.
+
 This note will describe some scenarios that are enabled by collecting and exposing activities.
 
 Biblio could act as a notification system that listens to (web) archiving events. For example, a SAFE‑PLN LOCKSS network could archive scholarly objects from Biblio and send an archiving announcement message when such archived objects become available. Such a value-added service can be presented to users as banners.
@@ -225,5 +242,54 @@ The network below places Biblio at the center of a potential network of activiti
 In an idealized world, all of these systems could be interlinked in both directions. Providing endpoints in these systems to inform each other about activities could be a first step toward realizing this idealized situation.
 
 ![](biblio_network.drawio.svg){fig-align="center" width="50%"}
+:::
 
+:::{.callout-tip}
+### Collect data/publication Links Using a Standards-Based Protocol
+
+A quick starting point for Biblio to introduce notifications could be the implementation of the COAR Notify profile for Event Notifications, enabling the collection of information about linkages to scholarly objects hosted by Biblio.
+
+An example repository containing possible message types is available at: https://codeberg.org/phochste/en-data-publication-example
+
+:::
+
+## Identification of Users
+
+Facilitating collection of activities or creation of overlay content such as annotation, commentary and peer review in distributed networks is greatly improved by the ability of uniformly identifying users.
+
+Such identifiers can be used to expand professional networks and to discover and identify important people, relevant scientific methods, conferences, journals, meetup venues, and funding opportunities. For example, ORCIDs can be used to query scholarly databases to find more information about the subject.
+
+:::{.callout-note}
+✔ Biblio currently implements many forms of identification mechanisms such as:
+
+- Internal Biblio identifiers: F5134A54-F0ED-11E1-A9DE-61C894A0A6B4
+- UGent identifiers: 802000069754, 975581625833
+- OCRID: 0000-0002-8596-222X
+:::
+
+However, there might be other identities that can be associated with a researcher such as:
+
+- Social media accounts: Linked-In, X, Bluesky, Mastodon, Blogs, Substack
+- External affiliation identifiers: Leuven ID, Oxford ID, Sorbonne ID
+
+Social media accounts are no longer just tools for casual networking; they have become vital hubs for real-time scholarly debate and academic exchange. Integrating these profiles (on a voluntary basis) into an institutional repository (such as Biblio) offers two strategic advantages:
+
+- *Connecting to informal scholarly communication*: it bridges the gap between formal publications and the "informal" scholarly conversations happening online, providing a fuller picture of a researcher’s impact.
+
+- *Verification and trust*: by linking to these platforms, the institution provides a "stamp of authenticity." This creates a digital handshake---often referred to as a `rel=me` link---that proves a social media account truly belongs to the researcher. This protects their professional identity and ensures that followers are engaging with a validated source.
+
+:::{.callout-tip}
+### Support a Richer Data Model for Person Identifiers
+What Biblio does quite well: 
+
+- ✔ Modelling persons using multiple unique identifiers
+- ✔ Make such identifiers addressable (e.g. https://biblio.ugent.be/person/0000-0001-8390-6171)
+- ✔ Presenting such identifiers as clickable links on the Person page
+- ✔ Exposing such identifiers in a machine-readable format (such as Signposting, JSON, RDF,...) 
+
+What Biblio is missing:
+
+- ❌ Supporting other types of person identifiers in the data model
+- ❌ Exposing all types of identifiers as clickable links on the Person page
+- ❌ Adding the `rel="me"` attribute to such clickable links
 :::
