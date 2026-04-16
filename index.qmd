@@ -311,7 +311,7 @@ As explained in the previous section, Biblio can be positioned as a facilitator 
 
 ### Exposing Standardized Usage Metrics
 
-By collecting standardized performance data, repositories can optimize internal workflows while proving their impact and utility to the broader community. To ensure these measurements are comparable across platforms and time, they must be reliable, accurate, and trusted by the community. Such quantitative measures can be shared across the community using established standards like COUNTER and implemented through open-source tools like Piwik. However, a primary challenge in maintaining these metrics is ensuring longitudinal compatibility (consistency over time), as evolving technical standards and reporting protocols can complicate long-term data consistency.
+By collecting standardized performance data, repositories can optimize internal workflows while proving their impact and utility to the broader community. To ensure these measurements are comparable across platforms and time, they must be reliable, accurate, and trusted by the community. Such quantitative measures can be shared across the community using established standards like COUNTER and implemented through open-source tools like Piwik. 
 
 This section uses the term '**performance data**' to differentiate it from **raw web logs**. The latter are notoriously messy, capturing everything from search engine crawls and malicious bots to requests for internal images and stylesheets. Performance data, by contrast, focuses on filtered metrics that essentially count only **genuine human activity**.
 
