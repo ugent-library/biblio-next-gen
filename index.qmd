@@ -297,11 +297,57 @@ What Biblio is missing:
 
 Alternative authentication mechanisms so that external researchers can interact with scholars and scholarly objects in Biblio.
 
-*Out of scope*
+Although allowing interactions with scholarly content in Biblio by external researchers offers interesting possibilities--such as comments, annotations, and reviews--in the near future, direct interaction within the repository systems seems somewhat out of scope.
+
+However, Biblio can act as a facilitator for verifying user identities at a global scale, as mentioned in the previous section. By allowing UGent researchers to voluntary configure ORCIDs, LinkedIn, Mastodon, and other global identifiers (links to profile pages on external services), and by exposing these links with `rel="me"` on the Biblio profile page, Biblio provides a "stamp of authenticity" for such identities. Only researchers with a UGent affiliation and valid UGent credentials have the opportunity to publish these bidirectional `rel="me"` links.
+
+Allowing such "social links" is becoming a common practice in research portals; however, trivially annotating these links with the `rel="me"` attribute is not.
+
+:::{.callout-tip}
+### Support rel="me" Back-Links to Global Identities
+
+As explained in the previous section, Biblio can be positioned as a facilitator for verifying UGent affiliation.
+:::
 
 ### Exposing Standardized Usage Metrics
 
-TODO
+By collecting standardized performance data, repositories can optimize internal workflows while proving their impact and utility to the broader community. To ensure these measurements are comparable across platforms and time, they must be reliable, accurate, and trusted by the community. Such quantitative measures can be shared across the community using established standards like COUNTER or implemented through open-source tools like Piwik. However, a primary challenge in maintaining these metrics is ensuring longitudinal compatibility (consistency over time), as evolving technical standards and reporting protocols can complicate long-term data consistency.
+
+This section uses the term '**performance data**' to differentiate it from **raw web logs**. The latter are notoriously messy, capturing everything from search engine crawls and malicious bots to requests for internal images and stylesheets. Performance data, by contrast, focuses on filtered metrics that essentially count only **genuine human activity**.
+
+Because the methods for filtering these bots and background requests evolve, maintaining consistent performance data across different years remains a significant challenge.
+
+The most import performance statistics for repositories include:
+
+- Total full-text downloads (human activity)
+- In-App downwloads (through the Biblio website)
+- Referral downloads (via search engines, direct links, etc)
+- Details page views (page hits on the landing page of a scholarly contribution)
+
+:::{.callout-note}
+✔ Implementation: Since June 2023, Biblio uses a Piwik installation to collect performance data. The software provides a suite of tools designed to filter out the majority of non-human bot activity, ensuring more accurate usage statistics.
+
+❌ Current Challenge: As of August 2025, there has been a significant surge in sophisticated bot activity (particularly originating from Chinese networks) that successfully mimics human behavior. This influx overwhelms standard filters, potentially inflating the data and masking genuine user trends.
+
+✔ Biblio utilizes "**Cool URIs**" to provide persistent and distinct web addresses for different resource types. This clear structure allows for the precise differentiation of landing pages, downloads, search queries, user and collection pages
+
+✔ Using these predictable URI patterns, the Piwik can granularly categorize and report on repository traffic.
+
+❌ Current reporting on full-text downloads in Piwik appears fragmentary. A comparative analysis using data from April 1, 2025 (a day without massive bot activity), revealed that only 4% of the total backend downloads is recorded in the Piwik. This is likely due to to limitations of client-side tracking which fails to trigger events for direct referral downloads.
+
+❌ The accuracy of our download metrics is currently hindered by internal redirects to the Biblio backend server. Because the backend manages the final file delivery, neither the frontend Nginx logs nor the Piwik data can verify if these hand-offs resulted in a successful file completion (HTTP 200) or a failed request.
+:::
+
+:::{.callout-tip}
+### Improve the Piwik Integeration for Collecting Performace Data 
+
+Piwik currently offers the most viable solution for tracking performance data while maintaining longitudinal compatibility. Although its bot filtering is not perfect, it remains a superior alternative to developing in-house heuristics, which often lack the consistency and community-validated standards provided by an established platform.
+
+- Configure **Goal Tracking**: implement conversion goals and custom events within Biblio and Piwik to systematically capture high-value interactions, specifically detail page views and full-text downloads.
+- Implement **server-side API Integration**: bridge the 96% reporting gap by utilizing the Piwik Tracking API on the backend. By logging downloads directly from the Biblio server, "In-App" activity and direct referral requests can be captured that bypass client-side JavaScript.
+
+While the server-side API allows Piwik to filter most bot traffic, additional custom rules in Biblio may be necessary to identify suspicious behavior.
+:::
 
 ### Preserving Resources
 
