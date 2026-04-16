@@ -325,9 +325,9 @@ The most import performance statistics for repositories include:
 - Details page views (page hits on the landing page of a scholarly contribution)
 
 :::{.callout-note}
-✔ Implementation: Since June 2023, Biblio uses a Piwik installation to collect performance data. The software provides a suite of tools designed to filter out the majority of non-human bot activity, ensuring more accurate usage statistics.
+✔ Implementation: since June 2023, Biblio uses a Piwik installation to collect performance data. The software provides a suite of tools designed to filter out the majority of non-human bot activity, ensuring more accurate usage statistics.
 
-❌ Current Challenge: As of August 2025, there has been a significant surge in sophisticated bot activity (particularly originating from Chinese networks) that successfully mimics human behavior. This influx overwhelms standard filters, potentially inflating the data and masking genuine user trends.
+❌ Current challenge: as of August 2025, there has been a significant surge in sophisticated bot activity (particularly originating from Chinese networks) that successfully mimics human behavior. This influx overwhelms standard filters, potentially inflating the data and masking genuine user trends.
 
 ✔ Biblio utilizes "**Cool URIs**" to provide persistent and distinct web addresses for different resource types. This clear structure allows for the precise differentiation of landing pages, downloads, search queries, user and collection pages
 
