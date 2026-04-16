@@ -163,7 +163,7 @@ Providing typed links as HTTP headers, however, allows machines to discover (met
 
 ✔ Discovery through navigation is handled quite well in Biblio for landing pages. Given a landing page, both humans and machines can discover the metadata and all other parts of the scholarly object.
 
-✔/❌ For the Person page, Biblio adds a `rel="alternate"` link to an RSS feed listing scholarly objects. However, this listing is fragmentary and only provides information about the most recent daily, weekly, and monthly entries for that person. The Biblio API does support a much richer export, but this can only be discovered if a human or machine manages to find the API page and correctly interpret its content.
+✔ ❌ For the Person page, Biblio adds a `rel="alternate"` link to an RSS feed listing scholarly objects. However, this listing is fragmentary and only provides information about the most recent daily, weekly, and monthly entries for that person. The Biblio API does support a much richer export, but this can only be discovered if a human or machine manages to find the API page and correctly interpret its content.
 
 Navigating to a page such as https://biblio.ugent.be/person/0000-0001-8390-6171 should also provide machines with a link to a machine-readable version of these publications—for example, a `rel="alternate"` link to https://biblio.ugent.be/person/0000-0001-8390-6171/publication/export?format=json. Such `rel="alternate"` links could also be exposed via HTTP Link headers for the sake of uniformity.
 
