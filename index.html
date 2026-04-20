@@ -557,6 +557,20 @@ Note
 <p>❓ It is unclear how users can benefit from such data dumps, for example, how they can migrate their records and associated content to another environment.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The CORE service is currently harvesting not only the metadata of Biblio but also all the public accessible content https://core.ac.uk/documentation/dataset</p>
+<p>Ghent University Library could opt to provide a similar service or provide a link to CORE.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -574,7 +588,44 @@ Note
 </section>
 <section id="batch-discovery" class="level2">
 <h2 class="anchored" data-anchor-id="batch-discovery">Batch Discovery</h2>
-<p>TODO</p>
+<p>Batch discovery facilitates cross-repository access to scholarly resources and is essential for establishing repositories as important players in scholarly communication. The better repository resources are surfaced through batch discovery mechanisms, the more likely they are to be found by users and applications alike. The discovery of scholarly resources in external portals also helps maintain the UGent research brand across various domains. In combination with the registration of both traditional and non-traditional resources, this approach can highlight the impact of UGent research.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Biblio currently provides several discovery mechanisms, including:</p>
+<ul>
+<li>✔ <strong>Signposting links</strong>, as described in the previous sections.</li>
+<li>✔ <strong>Published sitemaps</strong>, which are widely used by webmasters to inform search engines about pages that are available for crawling.</li>
+<li>✔ <strong>Structured metadata in HTML landing pages</strong>, including Highwire, EPrints, and Dublin Core <code>&lt;meta&gt;</code> tags, which strengthen the SEO strategy for general-purpose web crawlers.</li>
+<li>✔ <strong>OAI havesting services</strong>, to exposes metadata via aggregators such as BASE, CORE and OpenAIRE.</li>
+<li>✔ <strong>Permanent URL Stability</strong>: ensuring landing and content page URLs remain unchanged during system updates. This provides consistency for external aggregators, preventing broken links and the need for deduplication.</li>
+</ul>
+</div>
+</div>
+<p>As of April 2026, Google reports 443,000 Biblio pages in its indexes (115%), Google Scholar 137,000 (36%), and Google Search Console 372,000 (97%). Bing reports only 2,960 indexed Biblio pages (0.8%), and no Bing Webmaster Tools configuration appears to be active.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Maintain Strong Batch Discovery Features
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the next generation of Biblio, the strong batch discovery features of the current system should be maintained.</p>
+<p>Activate the Bing Webmaster Tools for Biblio.</p>
+<p>Consider keeping a yearly record of number of pages indexed in Google Search Console for statistical purposes.</p>
+</div>
+</div>
+<p>TODO write something about crawling activities (e.g.&nbsp;bots)</p>
 <section id="preserving-resources" class="level3">
 <h3 class="anchored" data-anchor-id="preserving-resources">Preserving Resources</h3>
 <p>TODO</p>

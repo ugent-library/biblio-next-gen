@@ -367,6 +367,12 @@ In short, such service custodians need to transfer repository content efficientl
 ❓ It is unclear how users can benefit from such data dumps, for example, how they can migrate their records and associated content to another environment.
 :::
 
+:::{.callout-note}
+The CORE service is currently harvesting not only the metadata of Biblio but also all the public accessible content https://core.ac.uk/documentation/dataset
+
+Ghent University Library could opt to provide a similar service or provide a link to CORE.
+:::
+
 :::{.callout-tip}
 ### Improve Resource Transfer Functionality
 
@@ -377,7 +383,31 @@ Provide Biblio with an export mechanism that allows users to download a copy of 
 
 ## Batch Discovery
 
-TODO
+Batch discovery facilitates cross-repository access to scholarly resources and is essential for establishing repositories as important players in scholarly communication. The better repository resources are surfaced through batch discovery mechanisms, the more likely they are to be found by users and applications alike. The discovery of scholarly resources in external portals also helps maintain the UGent research brand across various domains. In combination with the registration of both traditional and non-traditional resources, this approach can highlight the impact of UGent research.
+
+:::{.callout-note}
+Biblio currently provides several discovery mechanisms, including:
+
+- ✔ **Signposting links**, as described in the previous sections.
+- ✔  **Published sitemaps**, which are widely used by webmasters to inform search engines about pages that are available for crawling.
+- ✔  **Structured metadata in HTML landing pages**, including Highwire, EPrints, and Dublin Core `<meta>` tags, which strengthen the SEO strategy for general-purpose web crawlers.
+- ✔  **OAI havesting services**, to exposes metadata via aggregators such as BASE, CORE and OpenAIRE.
+- ✔  **Permanent URL Stability**: ensuring landing and content page URLs remain unchanged during system updates. This provides consistency for external aggregators, preventing broken links and the need for deduplication.
+:::
+
+As of April 2026, Google reports 443,000 Biblio pages in its indexes (115%), Google Scholar 137,000 (36%), and Google Search Console 372,000 (97%). Bing reports only 2,960 indexed Biblio pages (0.8%), and no Bing Webmaster Tools configuration appears to be active.
+
+:::{.callout-tip}
+### Maintain Strong Batch Discovery Features
+
+In the next generation of Biblio, the strong batch discovery features of the current system should be maintained.
+
+Activate the Bing Webmaster Tools for Biblio.
+
+Consider keeping a yearly record of number of pages indexed in Google Search Console for statistical purposes.
+:::
+
+TODO write something about crawling activities (e.g. bots)
 
 ### Preserving Resources
 
