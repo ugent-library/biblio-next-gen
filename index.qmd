@@ -177,7 +177,7 @@ Repositories can also increase their value by supporting services such as **aler
 
 The interconnections are not only possible within the university landscape but are also envisioned on a **global scale**. Repositories could support commentary, annotation, and peer review activities. They can submit scholarly objects to archival services and aggregators not only in batches but also in an ad hoc manner.
 
-Even **internally**, a notification system can support topic subscriptions, webhooks, and similar mechanisms. More broadly, a uniform protocol for interacting with resources discourages monolithic system design. By applying a separation of concerns, capabilities such as data enrichment or automatic content discovery can be implemented independently of the core repository system — or delegated entirely to external services. For example, the management of temporary access to a scholarly object could be handled externally, while the access logic itself remains close to the content.
+Even **internally**, a notification system can support topic subscriptions, webhooks, and similar mechanisms. More broadly, a uniform protocol for interacting with resources discourages monolithic system design. By applying a separation of concerns, capabilities such as data enrichment or automatic content discovery can be implemented independently of the core repository system, or delegated entirely to external services. For example, the management of temporary access to a scholarly object could be handled externally, while the access logic itself remains close to the content.
 
 Technologies to support these interoperability features are available across a range of messaging, alerting, annotation, and notification mechanisms. **(+)** A local messaging system offers full control over features, behavior, and performance tuning for a specific workload, **(−)** but introduces interoperability limitations and long-term sustainability concerns. Such systems are appropriate when no external dependencies are required. Crossing departmental or institutional boundaries, however, demands interoperability, ecosystem support, and long-term maintainability.
 
@@ -275,7 +275,7 @@ Social media accounts are no longer just tools for casual networking; they have 
 
 - *Connecting to informal scholarly communication*: it bridges the gap between formal publications and the "informal" scholarly conversations happening online, providing a fuller picture of a researcher’s impact.
 
-- *Verification and trust*: by linking to these platforms, the institution provides a "stamp of authenticity." This creates a digital handshake---often referred to as a `rel=me` link---that proves a social media account truly belongs to the researcher. This protects their professional identity and ensures that followers are engaging with a validated source.
+- *Verification and trust*: by linking to these platforms, the institution provides a "stamp of authenticity." This creates a digital handshake (often referred to as a `rel=me` link) that proves a social media account truly belongs to the researcher. This protects their professional identity and ensures that followers are engaging with a validated source.
 
 :::{.callout-tip}
 ### Support a Richer Data Model for Person Identifiers
@@ -297,7 +297,7 @@ What Biblio is missing:
 
 Alternative authentication mechanisms so that external researchers can interact with scholars and scholarly objects in Biblio.
 
-Although allowing interactions with scholarly content in Biblio by external researchers offers interesting possibilities--such as comments, annotations, and reviews--in the near future, direct interaction within the repository systems seems somewhat out of scope.
+Although allowing interactions with scholarly content in Biblio by external researchers offers interesting possibilities--such as comments, annotations, and reviews--in the near future, direct interaction within the repository systems seems currently somewhat out of scope.
 
 However, Biblio can act as a facilitator for verifying user identities at a global scale, as mentioned in the previous section. By allowing UGent researchers to voluntary configure ORCIDs, LinkedIn, Mastodon, and other global identifiers (links to profile pages on external services), and by exposing these links with `rel="me"` on the Biblio profile page, Biblio provides a "stamp of authenticity" for such identities. Only researchers with a UGent affiliation and valid UGent credentials have the opportunity to publish these bidirectional `rel="me"` links.
 
@@ -348,6 +348,36 @@ Piwik currently offers the most viable solution for tracking performance data wh
 
 While the server-side API allows Piwik to filter most bot traffic, additional custom rules in Biblio may be necessary to identify suspicious behavior.
 :::
+
+## Resource Transfer
+
+While the next-generation repositories report emphasizes a resource-centric paradigm, in which resources are not arbitrarily copied from system to system but are referenced where they reside, there are use cases in which copying resources (content resources, metadata resources, or the scholarly object as a whole) is necessary. Examples of such use cases include text and data mining, preservation workflows, migrations, and user-initiated exports.
+
+In short, such service custodians need to transfer repository content efficiently.
+
+:::{.callout-note}
+✔ Biblio currently provides daily exports in standardized formats (such as the [MODS export](https://biblio.ugent.be/exports/publications-mods36.xml), which provide external services with complete information about the constituents of a scholarly object, along with links to the associated content resources.
+
+❌ The MODS export could benefit from additional references, such as a URL to the landing page and more consistent use of identifiers when specifying licenses (or the lack thereof).
+
+❓ It is unclear how preservation services based on the data dump information alone can get access to content resource with restricted access conditions.
+
+❓ It is unclear whether the MODS dump format will continue to evolve within the repository landscape, which would greatly benefit from the adoption of a uniform format and interface for resource transfer, such as the SWORD or ResourceSync protocols.
+
+❓ It is unclear how users can benefit from such data dumps, for example, how they can migrate their records and associated content to another environment.
+:::
+
+:::{.callout-tip}
+### Improve Resource Transfer Functionality
+
+Provide Biblio with a standardized export mechanism that facilitates the transfer of metadata and content resources (including potentially restricted resources) to other services (e.g., preservation services).
+
+Provide Biblio with an export mechanism that allows users to download a copy of their metadata and associated content.
+:::
+
+## Batch Discovery
+
+TODO
 
 ### Preserving Resources
 
